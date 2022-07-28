@@ -1,19 +1,150 @@
 import React from 'react';
+import { useState, useEffect } from 'react'
 import "./Blog.css";
-import tie from "../../images/tie.jpg"
-import lara from "../../images/lara.jpg"
-import joe from "../../images/joe.webp"
-import tech from "../../images/tech.jpg"
-import travels from "../../images/travels.jpg"
-import game from "../../images/game.jpg"
+import { Link } from "react-router-dom"
+import sanityClient from "../../client"
+//import Blogcard from './Blogcard';
+import SanityClient from "../../client"
+import imageUrlBuilder from '@sanity/image-url'
+import { useParams } from "react-router-dom"
+//import BlockContent from '@sanity/block-content-to-react'
+
 
 const Blog = () => {
+
+  const { slug } = useParams()
+  const builder = imageUrlBuilder(SanityClient)
+
+const urlFor = (source) => {
+    return builder.image(source)
+}
+  
+  const [allPostsData, setAllPostsData] = useState(null)
+
+
+  useEffect(() => {
+    sanityClient.fetch(
+        `*[_type == 'post']{
+          
+          title,
+          
+            slug,
+            Categories,
+            category,
+            mainImage{
+                asset->{
+                    _id,
+                    url
+                }
+            },
+            body,
+            categories,
+            category,
+            "name": author->name,
+            "authorImage": author->image,
+            
+            "category": post->Categories, 
+        }`,
+        
+    )
+    .then(data => setAllPostsData(data))
+    .catch(err => console.error(err))
+}, [])
+
   return (<>
   <section className='blogsection'>
     <div class="container">
 
 
+    {allPostsData && allPostsData.map((post, index) => (
 
+<Link to={'/' + post.slug.current} key={post.slug.current}>
+<div class="card">
+     <div class="card__header">
+       <img src={post.mainImage.asset.url} alt="card__image" class="card__image" width="600" height="200" />
+     </div>
+     <div class="card__body">
+       <span class="tag tag-blue">{post.category}</span>
+       <h4>{post.title}</h4>
+       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi perferendis molestiae non nemo doloribus. Doloremque, nihil! At ea atque quidem!</p>
+    
+
+     </div>
+     <div class="card__footer">
+       <div class="user">
+         <img src={urlFor(post.authorImage).url()} alt="user__image" class="user__image" />
+         <div class="user__info">
+           <h5>{post.name}</h5>
+           <small>2h ago</small>
+         </div>
+       </div>
+     </div>
+   </div>
+
+
+
+    </Link>
+))}
+
+
+
+  </div>
+  </section>
+  </>
+  )
+}
+
+export default Blog;
+
+
+/*
+<div class="card">
+     <div class="card__header">
+     <img src={post.mainImage.asset.url} alt="card__image" class="card__image" width="600" height="200" />
+     </div>
+     <div class="card__body">
+     <span class="tag tag-blue">{post.category}</span>
+     
+     <h4>{post.title}</h4>
+     <h5>{post.name}</h5> 
+       
+     <img src={urlFor(post.authorImage).url()} alt="user__image" class="user__image" />
+     </div>
+     </div>
+
+
+
+
+
+
+    {allPostsData && allPostsData.map((post, index) => (
+
+<Link to={'/' + post.slug.current} key={post.slug.current}>
+<div class="card">
+     <div class="card__header">
+       <img src={post.mainImage.asset.url} alt="card__image" class="card__image" width="600" height="200" />
+     </div>
+     <div class="card__body">
+       <span class="tag tag-blue">{post.categories}</span>
+       <h4>{post.title}</h4>
+       <p>{post.slug}</p>
+     </div>
+     <div class="card__footer">
+       <div class="user">
+         <img src={urlFor(post.authorImage).url()} alt="user__image" class="user__image" />
+         <div class="user__info">
+           <h5>{post.name}</h5>
+           <small>2h ago</small>
+         </div>
+       </div>
+     </div>
+   </div>
+</Link>
+))}
+
+
+
+ 
     <div class="card">
       <div class="card__header">
         <img src={tech} alt="card__image" class="card__image" width="600" height="200" />
@@ -77,14 +208,4 @@ const Blog = () => {
         </div>
       </div>
     </div>
-
-
-
-
-  </div>
-  </section>
-  </>
-  )
-}
-
-export default Blog;
+*/

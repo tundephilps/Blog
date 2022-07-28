@@ -9,6 +9,9 @@ import Products from "./pages/Products";
 import Services from "./pages/Services";
 import Signup from "./pages/Signup";
 import Blog from "./pages/Blog/Blog";
+import Blogpage from "./pages/Blog/Blogpage";
+
+//import { Blog, Blogcard } from "../pages"
 
 function App() {
   return (
@@ -20,6 +23,8 @@ function App() {
           <Route path="/contactus" element={<Contactus />}></Route>
           
           <Route path="/Blog" element={<Blog />}></Route>
+          <Route path="/:slug" element={<Blogpage />}></Route>
+          
           <Route path="/products" element={<Products />}></Route>
           <Route path="/services" element={<Services />}></Route>
           <Route path="/signup" element={<Signup />}></Route>

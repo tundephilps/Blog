@@ -1,0 +1,8 @@
+export { default as Blog } from "./Blog"
+export { default as Blogcard } from "./Blogcard"
+import tie from "../../images/tie.jpg"
+import lara from "../../images/lara.jpg"
+import joe from "../../images/joe.webp"
+import tech from "../../images/tech.jpg"
+import travels from "../../images/travels.jpg"
+import game from "../../images/game.jpg"

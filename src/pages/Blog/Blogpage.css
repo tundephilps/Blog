@@ -1,0 +1,196 @@
+@import url("https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,300,200");
+
+/*
+	Halcyonic by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+*/
+
+
+	#content {
+        background: #7f7fd5;
+        background: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
+        
+        border-top: solid 1px #fff;
+		padding: 45px 0 45px 0;
+	}
+
+		#content section {
+			background: #fff;
+			padding: 40px 30px 45px 30px;
+			box-shadow: 2px 2px 2px 1px rgba(128, 128, 128, 0.1);
+			margin: 0 0 25px 0;
+		}
+
+		#content h2 {
+			font-size: 1.8em;
+			color: #373f42;
+			margin: 0 0 0.25em 0;
+		}
+
+		#content h3 {
+			color: #96a9b5;
+			font-size: 1.25em;
+		}
+
+		#content a {
+			color: #ED391B;
+		}
+
+		#content header {
+			margin: 0 0 2em 0;
+		}
+
+		#content .quote-list li {
+			border-bottom: solid 1px #e2e6e8;
+		}
+
+		#content .link-list li {
+            text-decoration: none;
+            text-decoration-style: none;
+		}
+
+		#content .check-list li {
+			border-bottom: solid 1px #e2e6e8;
+		}
+
+/* Footer */
+
+	@media screen and (max-width: 1280px) {
+
+		/* Multi-use */
+
+			.check-list li {
+				font-size: 1em;
+				line-height: 2em;
+			}
+
+			.quote-list li {
+				padding: 1em 0 1em 0;
+			}
+
+				.quote-list li img {
+					width: 60px;
+				}
+
+				.quote-list li p {
+					margin: 0 0 0 80px;
+					font-size: 1em;
+					font-style: italic;
+					line-height: 1.8em;
+				}
+
+				.quote-list li span {
+					display: block;
+					margin-left: 80px;
+					font-size: 0.8em;
+					font-weight: 400;
+					line-height: 1.8em;
+				}
+
+			.feature-image {
+				margin: 0 0 1em 0;
+			}
+
+			.button-large {
+				font-size: 1.5em;
+			}
+
+		/* Banner */
+
+
+		/* Content */
+
+			#content h2 {
+				font-size: 1.4em;
+			}
+
+			#content h3 {
+				font-size: 1.1em;
+			}
+
+			#content header {
+				margin: 0 0 1.25em 0;
+			}
+
+	}
+
+/* Medium */
+
+	#navPanel, #titleBar {
+		display: none;
+	}
+
+	@media screen and (max-width: 980px) {
+
+		/* Basic */
+
+			html, body {
+				overflow-x: hidden;
+			}
+
+		/* Header */
+
+			#header {
+				text-align: center;
+			}
+
+				#header > .container:first-child {
+					display: none;
+				}
+
+		/* Content */
+
+			#content {
+				padding: 25px 0;
+			}
+        }
+		/* Nav */
+
+/* Small */
+
+	@media screen and (max-width: 736px) {
+
+		/* Basic */
+
+			body, input, textarea, select {
+				font-size: 13pt;
+				line-height: 1.4em;
+			}
+
+		/* Multi-use */
+
+			.link-list li {
+				padding: 0.75em 0 0.75em 0;
+			}
+
+			.quote-list li p {
+				margin-bottom: 0.5em;
+			}
+
+			.check-list li {
+				font-size: 1em;
+			}
+
+			.button-large {
+				width: 100%;
+			}
+
+		/* Content */
+
+			#content section {
+				padding: 30px 20px;
+			}
+
+			#content h2 {
+				font-size: 1.25em;
+			}
+
+			#content h3 {
+				font-size: 1em;
+			}
+
+			#content header {
+				margin: 0 0 1.25em 0;
+			}
+        }
