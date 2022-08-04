@@ -1,9 +1,10 @@
 import React from "react";
+import Newscard from "./News/Newscard";
 
 function Products() {
   return (
     <div>
-      <h1 className="products">Products</h1>
+      <Newscard />
     </div>
   );
 }

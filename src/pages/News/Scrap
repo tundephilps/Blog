@@ -1,0 +1,321 @@
+/*import React from 'react';
+import { useEffect, useState } from 'react';
+import "./Newscard.scss";
+import ReactPaginate from 'react-paginate';
+import axios from 'axios';
+import Newscard from './Newscard';
+
+const Newslist = () => {
+    const [ currentPage, setCurrentPage ] = useState(0);
+    const [ articles, setArticles ] = useState([]);
+    const [ isLoading, setIsLoading ] = useState(true);
+    const [ totalPages, setTotalPages ] = useState(0)
+    const [ query, setQuery ] = useState("");
+    const [ searchInput, setSearchInput ] = useState("");
+
+    //const handlePageChange = event => {
+        //setCurrentPage(event.selected);
+    //};
+
+
+    //const handleSubmit = event => {
+      //  event.preventDefault();
+       // setCurrentPage(0);
+       // setQuery(searchInput);
+    //}
+
+    useEffect(() => {
+       // setIsLoading(true);
+        const getArticles = async () => {
+            const response = await axios.get("https://newsapi.org/v2/everything?q=Apple&from=2022-08-03&sortBy=popularity&apiKey=7458ced62a5549ae901131a48be751a5",
+
+            
+                        {
+                            params: {page: currentPage, query},
+                        }
+            
+            )
+
+            
+            setArticles(response.data.articles) 
+    
+    }
+    getArticles()
+},   [currentPage, query]);
+       /*     setIsLoading(true);
+            const getArticles = async () => {
+                try {
+                    const response = await axios.get(
+                        "https://newsapi.org/v2/everything?q=Apple&from=2022-08-03&sortBy=popularity&apiKey=7458ced62a5549ae901131a48be751a5",
+                        
+                        {
+                            params: {page: currentPage, query},
+                        }
+
+                        );
+                  // const { hits, nbPages } = data;
+                   setArticles(response.data.articles) 
+                //  setArticles(hits);
+                  //  setTotalPages(nbPages);
+                    console.log(response);
+                }   catch (err) {
+                    console.log(err);
+                }   finally {
+                    setIsLoading(false);
+                }
+
+            };
+            getArticles();
+           }, [currentPage, query]);
+    
+
+  return (
+    
+    <section id='newssection'>
+<div id="searchinput">
+<form id="searchthis" action="/search" onSubmit={handleSubmit}
+>
+<input id="namanyay-search-box"
+        placeholder="Search the News"
+        value={searchInput}
+        onChange={event => setSearchInput(event.target.value)} size="40" type="text"
+         />
+<input id="namanyay-search-btn" value="Go" type="submit"/>
+</form>
+</div>
+
+    <div class="content-wrapper">
+    {articles.map(article => {
+    return (
+        <Newscard
+            title={article.title}
+            description={article.description}
+            url={article.url}
+            date={article.date}
+            urlToImage={article.urlToImage}
+        />
+    )
+})}
+
+    </div>
+            <ReactPaginate
+                nextLabel= ">>"
+                previousLabel= "<<"
+                breakLabel="..."
+                forcePage={currentPage}
+                pageCount={totalPages}
+                renderOnZeroPageCount={null}
+                onPageChange={handlePageChange}
+                className="pagination"
+                activeClassName='active-page'
+                previousClassName='previous-page'
+                nextClassName='next-page'
+/>
+    
+    </section>
+  )
+}
+
+export default Newslist
+
+
+
+
+/**
+ * 
+ * 
+   setIsLoading(true);
+            const fetchData = async () => {
+                try {
+                    const { data } = await axios.get(
+                        "https://hn.algolia.com/api/v1/search?",
+                        
+                        {
+                            params: {page: currentPage, query},
+                        }
+
+                        );
+                   const { hits, nbPages } = data;
+                  setArticles(hits);
+                    setTotalPages(nbPages);
+                    console.log(data);
+                }   catch (err) {
+                    console.log(err);
+                }   finally {
+                    setIsLoading(false);
+                }
+
+            };
+            fetchData();
+           }, [currentPage, query]);
+
+
+
+
+           {  isLoading ? ( 
+    <p>Loading...</p>
+    ) : ( 
+        articles.map(article => (
+        <Newscard //article={article} key={article.objectID}
+        title={articles.title}
+        description={articles.description}
+        url={articles.url}
+        date={articles.publishedAT}
+        urlToImage={articles.urlToImage}
+    
+        /> 
+        ))
+)}
+
+     
+
+ * 
+ * 
+ * 
+ const getArticles = async () => {
+ 
+            const response = await axios.get("https://newsapi.org/v2/everything?q=Apple&from=2022-08-03&sortBy=popularity&apiKey=7458ced62a5549ae901131a48be751a5")
+            console.log(response)
+            setArticles(response.data.articles) 
+ 
+    
+
+        }
+        getArticles()
+
+
+        
+{articles.map(articles => {
+    return (
+        <Newscard
+            title={articles.title}
+            description={articles.description}
+            url={articles.url}
+            date={articles.date}
+            urlToImage={articles.urlToImage}
+        />
+    )
+})}
+
+
+
+
+
+
+
+
+
+import React from 'react';
+import { useEffect, useState } from 'react';
+import "./Newscard.scss";
+import ReactPaginate from 'react-paginate';
+import axios from 'axios';
+import Newscard from './Newscard';
+
+
+
+const Newslist = () => {
+    const [ articles, setArticles ] = useState([])
+    const [ currentPage, setCurrentPage ] = useState(0);
+    //const [ isLoading, setIsLoading ] = useState(true);
+    const [ totalPages, setTotalPages ] = useState(0)
+    const [ query, setQuery ] = useState("");
+    const [ searchInput, setSearchInput ] = useState("");
+
+    const handlePageChange = event => {
+        console.log(event);
+        setCurrentPage(event.selected);
+    };
+
+    
+    const handleSubmit = event => {
+       event.preventDefault();
+        setCurrentPage(0);
+        setQuery(searchInput);
+    }
+
+
+    useEffect(() => {
+        const getArticles = async () => {
+            const response  = await axios.get("https://newsapi.org/v2/everything?q=Apple&from=2022-08-03&sortBy=popularity&apiKey=df8748021fa744db86eaa3e659f732a3
+            7458ced62a5549ae901131a48be751a5");
+            
+           //  {
+             //   params: {page: currentPage + 1, query},
+            //}
+            
+
+            console.log(response)
+         
+            
+            setArticles(response.data.articles);
+            
+            
+          // setTotalPages(totalResults);
+           
+           // const { articles, totalResults } = response;
+            
+
+            setArticles(articles);
+            
+
+    
+        };
+    
+getArticles();
+}, [currentPage, query, articles]);
+
+
+  return (
+    
+            <section id='newssection'>
+<div id="searchinput">
+<form id="searchthis" action="/search" onSubmit={handleSubmit}
+>
+<input id="namanyay-search-box"
+        placeholder="Search the News"
+        value={searchInput}
+        onChange={event => setSearchInput(event.target.value)} size="40" type="text"
+         />
+<input id="namanyay-search-btn" value="Go" type="submit"/>
+</form>
+</div>
+
+ <div class="content-wrapper">
+    {articles.map(article => {
+    return (
+        <Newscard
+            title={article.title}
+            description={article.description}
+            url={article.url}
+            date={article.date}
+            urlToImage={article.urlToImage}
+        />
+    )
+})}
+
+    </div>
+    <ReactPaginate
+                nextLabel= ">>"
+                previousLabel= "<<"
+                breakLabel="..."
+                forcePage={currentPage}
+               //  pageCount={5}
+                renderOnZeroPageCount={null}
+                onPageChange={handlePageChange}
+                className="pagination"
+                activeClassName='active-page'
+                previousClassName='previous-page'
+                nextClassName='next-page'
+/>
+
+
+   
+</section>
+    
+  )
+}
+
+export default Newslist;
+        * 
+ */

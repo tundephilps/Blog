@@ -6,10 +6,11 @@ import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home";
 import Contactus from "./pages/Contactus";
 import Products from "./pages/Products";
-import Services from "./pages/Services";
 import Signup from "./pages/Signup";
 import Blog from "./pages/Blog/Blog";
 import Blogpage from "./pages/Blog/Blogpage";
+//import Newscard from "./pages/News/Newscard";
+import Newslist from "./pages/News/Newslist";
 
 //import { Blog, Blogcard } from "../pages"
 
@@ -26,7 +27,7 @@ function App() {
           <Route path="/:slug" element={<Blogpage />}></Route>
           
           <Route path="/products" element={<Products />}></Route>
-          <Route path="/services" element={<Services />}></Route>
+          <Route path="/news" element={<Newslist />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
         </Routes>
       </Router>

@@ -20,7 +20,7 @@ export const navItems = [
   {
     id: 3,
     title: "World News",
-    path: "./products",
+    path: "./news",
     nName: "nav-item",
     sName: "sidebar-item",
     icon: <Icons.FaGlobeAmericas />,
